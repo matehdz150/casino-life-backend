@@ -41,3 +41,43 @@ export const getMyProfile = async (req: AuthRequest, res: Response) => {
     res.status(500).json({ error: "No se pudo obtener el perfil" });
   }
 };
+
+
+export const updateCoins = async (req: AuthRequest, res: Response) => {
+  try {
+    const { game, result, amount } = req.body;
+
+    if (!game || !result || typeof amount !== "number") {
+      return res.status(400).json({ message: "Datos incompletos o inválidos" });
+    }
+
+    if (!req.user) {
+      return res.status(401).json({ message: "No autorizado" });
+    }
+
+    const [user] = await db.select().from(users).where(eq(users.id, req.user.id));
+    if (!user) {
+      return res.status(404).json({ message: "Usuario no encontrado" });
+    }
+
+    const newCoins =
+      result === "win" ? user.coins + amount : Math.max(0, user.coins - amount);
+
+    await db.update(users).set({ coins: newCoins }).where(eq(users.id, req.user.id));
+
+    await db.insert(gameRecords).values({
+      userId: req.user.id,
+      game,
+      result,
+      amount,
+    });
+
+    res.json({
+      message: "Monedas actualizadas correctamente",
+      newBalance: newCoins,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al actualizar las monedas" });
+  }
+};

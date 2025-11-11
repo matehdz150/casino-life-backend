@@ -53,9 +53,10 @@
  */
 
 import express from "express";
-import { getMyProfile } from "../controllers/profile.controller";
+import { getMyProfile, updateCoins } from "../controllers/profile.controller";
 import { authenticate } from "../middlewares/auth";
 
 export const profileRoutes = express.Router();
 
 profileRoutes.get("/me", authenticate, getMyProfile);
+profileRoutes.post("/update-coins", authenticate, updateCoins);
