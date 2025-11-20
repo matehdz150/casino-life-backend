@@ -61,7 +61,9 @@ export const updateCoins = async (req: AuthRequest, res: Response) => {
     }
 
     const newCoins =
-      result === "win" ? user.coins + amount : Math.max(0, user.coins - amount);
+      result === "win"
+        ? user.coins + amount   // suma solo lo ganado
+        : Math.max(0, user.coins - amount); // resta solo lo perdido
 
     await db.update(users).set({ coins: newCoins }).where(eq(users.id, req.user.id));
 
