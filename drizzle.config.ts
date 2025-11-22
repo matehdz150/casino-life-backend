@@ -10,5 +10,6 @@ export default {
     user: "casino_admin",
     password: "casino123",
     database: "casino_life",
+    ssl: false,
   },
 } satisfies Config;

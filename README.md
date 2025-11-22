@@ -31,15 +31,14 @@ casino-life-backend/
 
 2. Crear un archivo .env en raiz del proyecto:
 
-DATABASE_URL=postgresql://casino_user:casino_password@localhost:5432/casino_db
+DATABASE_URL=postgresql://casino_user:casino_password@127.0.0.1:5432/casino_db
 JWT_SECRET=mi_super_secreto_seguro
 PORT=8000
 
 3. Levantar PostgreSQL con Docker
-docker compose up -d
-4. npx drizzle-kit generate.  #Esto genera los archivos SQL dentro de /drizzle.
-5. npx drizzle-kit push.  #Para aplicar los cambios en la base de datos:
-6. docker compose up -d
+4. docker compose up -d
+5. npx drizzle-kit generate.  #Esto genera los archivos SQL dentro de /drizzle.
+6. npx drizzle-kit push.  #Para aplicar los cambios en la base de datos:
 7. npm run dev
 
 ---AUTENTICACION JWT---
