@@ -49,13 +49,13 @@ Content-Type: application/json
 
 ### Test: Registrar GANANCIA con decimales
 POST http://localhost:8000/api/profile/update-coins
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJtYXRlaGR6QGdtYWlsLmNvbSIsImlhdCI6MTc2Mzc3Mzc1NSwiZXhwIjoxNzY0Mzc4NTU1fQ.RlrPdAFcTBHzeg-DcV0Lecy0IUPry1WBT_4blN69oz0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJjZWNpcHVAZ21haWwuY29tIiwiaWF0IjoxNzYzODY0Mzg4LCJleHAiOjE3NjQ0NjkxODh9.nSrnohJSCwqdHCkJPaQeOHNIHfcR6KsGf33jd8Fqa_U
 Content-Type: application/json
 
 {
   "game": "dices",
   "result": "win",
-  "amount": 12.75
+  "amount": 1000000
 }
 
 ### Obtener mi perfil (incluye balance)
