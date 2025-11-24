@@ -1,0 +1,64 @@
+### 🧠 Health Check
+GET http://localhost:8000
+Content-Type: application/json
+
+
+### 👤 Registro de usuario
+POST http://localhost:8000/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "mateo@example.com",
+  "password": "1234"
+}
+
+
+### 🔑 Login de usuario
+POST http://localhost:8000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "mateo@example.com",
+  "password": "1234"
+}
+
+
+### 🪙 Registrar resultado de juego (ganó)
+POST http://localhost:8000/api/games/record
+Content-Type: application/json
+
+{
+  "email": "mateo@example.com",
+  "game": "dices",
+  "result": "win",
+  "amount": 200
+}
+
+
+### 💸 Registrar resultado de juego (perdió)
+POST http://localhost:8000/api/games/record
+Content-Type: application/json
+
+{
+  "email": "mateo@example.com",
+  "game": "dices",
+  "result": "win",
+  "amount": 100.97
+}
+
+
+### Test: Registrar GANANCIA con decimales
+POST http://localhost:8000/api/profile/update-coins
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJtYXRlaGR6QGdtYWlsLmNvbSIsImlhdCI6MTc2Mzc3Mzc1NSwiZXhwIjoxNzY0Mzc4NTU1fQ.RlrPdAFcTBHzeg-DcV0Lecy0IUPry1WBT_4blN69oz0
+Content-Type: application/json
+
+{
+  "game": "dices",
+  "result": "win",
+  "amount": 12.75
+}
+
+### Obtener mi perfil (incluye balance)
+GET http://localhost:8000/api/profile/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJtYXRlaGR6QGdtYWlsLmNvbSIsImlhdCI6MTc2Mzc2OTU4NiwiZXhwIjoxNzY0Mzc0Mzg2fQ.up23qky2KQ_KaCcAi-7DyUsSO4V0zmTSW4IFjnAN0CA
+Accept: application/json

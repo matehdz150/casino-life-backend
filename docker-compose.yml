@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:16
+    restart: always
+    container_name: casino_postgres
+    environment:
+      POSTGRES_USER: casino_admin
+      POSTGRES_PASSWORD: casino123
+      POSTGRES_DB: casino_life
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
